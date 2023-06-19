@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnector;
 import db.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,7 +29,7 @@ public class AddPhoneServlet extends HttpServlet {
     phone.setName(name);
     phone.setDescription(description);
     phone.setPrice(price);
-    DBManager.addPhone(phone);
+    DBConnector.addPhone(phone);
     resp.sendRedirect("/");
   }
 }

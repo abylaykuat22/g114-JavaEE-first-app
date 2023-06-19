@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnector;
 import db.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ public class HomeServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    List<Phone> phones = DBManager.getPhones();
+    List<Phone> phones = DBConnector.getPhones();
     req.setAttribute("telefony", phones);
     req.getRequestDispatcher("home.jsp").forward(req, resp);
   }

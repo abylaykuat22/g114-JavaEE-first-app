@@ -1,6 +1,6 @@
 package servlets;
 
-import db.DBManager;
+import db.DBConnector;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +16,7 @@ public class DetailsPhoneServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     Long id = Long.parseLong(req.getParameter("id"));
-    Phone phone = DBManager.getPhoneById(id);
+    Phone phone = DBConnector.getPhoneById(id);
     req.setAttribute("sotka", phone);
     req.getRequestDispatcher("details.jsp").forward(req, resp);
   }

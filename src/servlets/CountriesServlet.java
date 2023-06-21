@@ -1,6 +1,6 @@
 package servlets;
 
-import db.DBConnector;
+import db.DBCountriesConnector;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import models.Phone;
+import models.County;
 
-@WebServlet(value = "/")
-public class HomeServlet extends HttpServlet {
+@WebServlet(value = "/countries")
+public class CountriesServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    List<Phone> phones = DBConnector.getPhones();
-    req.setAttribute("telefony", phones);
-    req.getRequestDispatcher("home.jsp").forward(req, resp);
+    List<County> counties = DBCountriesConnector.getCounties();
+    req.setAttribute("strany", counties);
+    req.getRequestDispatcher("countries.jsp").forward(req, resp);
   }
 }

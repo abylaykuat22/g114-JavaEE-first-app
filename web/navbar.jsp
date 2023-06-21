@@ -24,7 +24,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a href="/countries" class="nav-link">Countries</a>
             </li>
         </ul>
         <form class="d-flex" role="search">

@@ -26,6 +26,9 @@
             <li class="nav-item">
                 <a href="/countries" class="nav-link">Countries</a>
             </li>
+            <li class="nav-item">
+                <a href="/users" class="nav-link">Cities</a>
+            </li>
         </ul>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

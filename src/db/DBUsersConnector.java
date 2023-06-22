@@ -56,9 +56,65 @@ public class DBUsersConnector {
         user.setCity(city);
         users.add(user);
       }
+      statement.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
     return users;
+  }
+
+  public static List<City> getCities() {
+    List<City> cities = new ArrayList<>();
+    try {
+      PreparedStatement statement = connection.prepareStatement(
+          "select * from cities");
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()) {
+        City city = new City();
+        city.setId(resultSet.getLong("id"));
+        city.setName(resultSet.getString("name"));
+        city.setCode(resultSet.getString("code"));
+        cities.add(city);
+      }
+      statement.close();
+    }catch (Exception e) {
+      e.printStackTrace();
+    }
+    return cities;
+  }
+
+  public static City getCityById(Long id) {
+    City city = null;
+    try {
+      PreparedStatement statement = connection.prepareStatement(
+          "select * from cities where id=?");
+      statement.setLong(1, id);
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next()) {
+        city = new City();
+        city.setId(resultSet.getLong("id"));
+        city.setName(resultSet.getString("name"));
+        city.setCode(resultSet.getString("code"));
+      }
+      statement.close();
+    }catch (Exception e) {
+      e.printStackTrace();
+    }
+    return city;
+  }
+
+  public static void addUser(User user) {
+    try {
+      PreparedStatement statement = connection.prepareStatement(
+          "insert into users(full_name, age, city_id) "
+              + "values (?, ?, ?)");
+      statement.setString(1, user.getFullName());
+      statement.setInt(2, user.getAge());
+      statement.setLong(3, user.getCity().getId());
+      statement.executeUpdate();
+      statement.close();
+    }catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

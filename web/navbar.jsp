@@ -27,7 +27,7 @@
                 <a href="/countries" class="nav-link">Countries</a>
             </li>
             <li class="nav-item">
-                <a href="/users" class="nav-link">Cities</a>
+                <a href="/users" class="nav-link">Users</a>
             </li>
         </ul>
         <form class="d-flex" role="search">
